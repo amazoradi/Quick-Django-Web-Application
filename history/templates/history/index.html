@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'history/styles.css' %}">
+
+{% if artist_list %}
+<h2>Artist Names</h2>
+  <ul>
+    {% for artist in artist_list %}
+      <li><a href="/history/{{ artist.id }}">{{ artist.artist_name }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No artist are available.</p>
+  <p>Bryan</p>
+{% endif %}
