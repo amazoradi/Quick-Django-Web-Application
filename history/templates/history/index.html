@@ -1,14 +1,27 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'history/styles.css' %}">
 
+
+{% block artist_info %}
+
+
 {% if artist_list %}
 <h2>Artist Names</h2>
-  <ul>
-    {% for artist in artist_list %}
-      <li><a href="/history/{{ artist.id }}">{{ artist.artist_name }}</a></li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for artist in artist_list %}
+  <li><a href="/history/{{ artist.id }}">{{ artist.artist_name }}</a></li>
+  {% endfor %}
+</ul>
 {% else %}
-  <p>No artist are available.</p>
-  <p>Bryan</p>
+<p>No artist are available.</p>
+<p>Bryan</p>
 {% endif %}
+
+<form method="post" action="{% url 'history:new_artist' %}">
+  {% csrf_token %}
+  <input type="text" name="artist_name" placeholder="New Artist">
+  <input type="text" name="date_formed" placeholder="Date formed">
+  <input type="submit" value="Add Artist">
+</form>
+
+{% endblock artist_info %}

@@ -7,7 +7,6 @@ class Artist(models.Model):
 
 
 class Song(models.Model):
-  # artist = models.ForeignKey(Artist, on_delete=models.CASCADE) 
   song_name = models.CharField(max_length=200)
   album_name = models.CharField(max_length=200)
 

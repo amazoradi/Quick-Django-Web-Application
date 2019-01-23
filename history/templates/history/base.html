@@ -1,13 +1,15 @@
 </html>
 
 <head>
-
+  <title>Django Music History</title>
+ 
+  <link rel="stylesheet" href="{% static 'history/styles.css' %}">
 </head>
 
 <body>
   <div>
-    {% block basic_structure %}
     <h1> Welcome to the Music history database</h1>
+    {% block basic_structure %}
     {% endblock basic_structure %}
   </div>
 </body>

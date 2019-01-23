@@ -1,0 +1,17 @@
+<!-- {% extends 'history/index.html' %}
+
+{% block artist_info %}
+<h2>New post</h2>
+<form method="POST" class="post-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="save btn btn-default">Save</button>
+</form>
+{% endblock artist_info %} -->
+
+<form method="post" action="{% url 'history:newArtist' %}">
+  {% csrf_token %}
+  <label for="newArtist">New Artist</label><br>
+  <input type="text" name="artist" id="newArtist">
+  <input type="submit" value="Artist">
+</form>

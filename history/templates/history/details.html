@@ -1,17 +1,22 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'history/styles.css' %}">
+{% if song_list|length != 0 %}
+<h2>Songs by {{ song_artist_list.artist_name}}</h2>
+<ul>
+  {% for songs in song_list %}
+  {% for song in songs%}
+  <li> {{ song.song_name }} on {{song.album_name}}  </li>
+  {% endfor %}
+  {% endfor %}
+</ul>
+<a href="/history">Back</a>
+{% else %}
+<p><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'> Get the full list here</a></p>
+{% endif %}
 
-
-  <h2>Songs by {{ song_artist_list.artist_name}}</h2>
-  <ul>
-    {% if song_list|length %}
-    {% for songs in song_list %}
-    {% for song in songs%}
-    <li> {{ song.song_name }} </li>
-    {% endfor %}
-    {% endfor %}
-  </ul>
-  <a href="/history">Back</a>
-  {% else %}
-  <p>Rick roll</p>
-  {% endif %}
+<form action="{%url 'history:new_song' song_artist_list.id %}" method='POST'>
+  {% csrf_token %}
+  <input type='text' name='song_name' placeholder="Song Name">
+  <input type='text' name='album_name' placeholder="Album Name">
+  <input type="submit" value="Save Artist">
+</form> 

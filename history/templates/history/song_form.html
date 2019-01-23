@@ -1,0 +1,8 @@
+<!-- <h3> {% if title_action%} {{title_action}} {%else%} Add a new song {%endif %}</h3> -->
+<h1>add song</h1>
+<form action="{%url 'history:new_song' %}" method='POST'>
+  {% crsf_token %}
+  <input type='text' name='song_name'>
+  <input type='text' name='album_name'>
+  <input type="submit" value="Save Artist">
+</form> 
