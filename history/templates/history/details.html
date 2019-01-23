@@ -1,11 +1,17 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'history/styles.css' %}">
-<div class="song_display">
-  <h2>Songs by {{ song_list.artist_name }}</h2>
+
+
+  <h2>Songs by {{ song_artist_list.artist_name}}</h2>
   <ul>
-    {% for song in song_list.song_set.all %}
-    <li>{{ song.song_name }} on {{ song.album_name }} {{% if song.artist.artist_name > 1 %}} feat {{song.artist.artist_name}} {{% endif %}} </li>
+    {% if song_list|length %}
+    {% for songs in song_list %}
+    {% for song in songs%}
+    <li> {{ song.song_name }} </li>
+    {% endfor %}
     {% endfor %}
   </ul>
   <a href="/history">Back</a>
-</div>
+  {% else %}
+  <p>Rick roll</p>
+  {% endif %}
